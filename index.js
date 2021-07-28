@@ -73,8 +73,8 @@ async function getCards(){
     let data = await response.json();
 
     document.querySelector(".player").innerHTML= `
-            <img src="${data.cards[0].images.png}">
-            <img src="${data.cards[1].images.png}">
+            <img src="${data.cards[0].images.png}" class="card-image">
+            <img src="${data.cards[1].images.png}" class="card-image">
     `
     startButton.classList.add("hidden");
     newCards.classList.remove("hidden");
@@ -87,9 +87,8 @@ async function newCard(){
     let response = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`);
     let data = await response.json();
 
-    console.log(data);
     document.querySelector(".player").innerHTML += `
-            <img src="${data.cards[0].images.png}">
+            <img src="${data.cards[0].images.png}" class="card-image">
             `
     
     determineCardValue(data.cards[0].value);
